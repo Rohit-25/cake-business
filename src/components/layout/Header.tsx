@@ -33,17 +33,23 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-stone bg-ivory/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-content items-center justify-between gap-3 px-5 py-4 sm:px-8">
-        <Link to="/" className="flex min-w-0 items-center gap-3" aria-label={site.name}>
+        <Link
+          to="/"
+          className="flex min-w-0 flex-1 items-center gap-3 pr-2 lg:flex-initial"
+          aria-label={site.name}
+        >
           {site.logoUrl ? (
             <img
               src={site.logoUrl}
               alt=""
               width={48}
               height={48}
-              className="h-11 w-11 shrink-0 rounded-full border border-stone/80 object-cover sm:h-12 sm:w-12"
+              className="h-11 w-11 shrink-0 rounded-full border border-stone/80 bg-card object-contain p-1 sm:h-12 sm:w-12 sm:p-1.5"
             />
           ) : (
-            <span className="truncate font-display text-lg leading-none text-chocolate sm:text-[1.35rem]">{site.name}</span>
+            <span className="font-display text-base leading-snug text-chocolate sm:text-[1.35rem] sm:leading-none">
+              {site.name}
+            </span>
           )}
         </Link>
 
@@ -61,17 +67,17 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2">
           <Link
             to="/plan"
-            className="btn-primary px-4 py-2.5 text-sm sm:px-5"
+            className="btn-primary hidden whitespace-nowrap px-4 py-2.5 text-sm sm:inline-flex sm:px-5"
             aria-label="Plan a cake — enquiry form"
           >
             {studio.headerCta}
           </Link>
           <button
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center border border-stone lg:hidden"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center border border-stone lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             onClick={() => setOpen((value) => !value)}
@@ -82,8 +88,11 @@ export function Header() {
         </div>
       </div>
 
-      <nav id="mobile-nav" hidden={!open} className="border-t border-stone px-5 py-2 lg:hidden" aria-label="Mobile">
+      <nav id="mobile-nav" hidden={!open} className="border-t border-stone px-5 py-4 lg:hidden" aria-label="Mobile">
         <div className="flex flex-col">
+          <Link to="/plan" className="btn-primary w-full">
+            {studio.headerCta}
+          </Link>
           <NavLink to="/" end className="py-3 text-base">
             Home
           </NavLink>
