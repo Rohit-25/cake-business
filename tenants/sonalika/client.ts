@@ -3,7 +3,7 @@ import type { ClientConfig } from "../../src/config/types";
 const base = "/tenants/sonalika/images";
 
 export const client: ClientConfig = {
-  name: "Sonalika",
+  name: "Cakes by Sonalika",
   baker: "Sonalika",
   instagramUrl: "https://www.instagram.com/_sonalika24_/",
   whatsappNumber: "",
