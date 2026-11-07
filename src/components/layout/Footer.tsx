@@ -21,7 +21,7 @@ export function Footer() {
         <div>
           <p className="text-xs font-medium uppercase tracking-[0.15em] text-chocolate">Enquire</p>
           <Link to="/plan" className="btn-primary mt-3">
-            {studio.primaryCta}
+            {studio.sectionPlan}
           </Link>
           <a
             href={site.instagramUrl}

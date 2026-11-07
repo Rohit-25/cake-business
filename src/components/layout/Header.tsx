@@ -62,11 +62,12 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Link to="/plan" className="btn-primary hidden px-5 py-2.5 text-sm sm:inline-flex">
-            {studio.primaryCta}
-          </Link>
-          <Link to="/plan" className="btn-primary px-4 py-2.5 text-sm sm:hidden">
-            Create
+          <Link
+            to="/plan"
+            className="btn-primary px-4 py-2.5 text-sm sm:px-5"
+            aria-label="Plan a cake — enquiry form"
+          >
+            {studio.headerCta}
           </Link>
           <button
             type="button"

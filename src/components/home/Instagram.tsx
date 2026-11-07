@@ -1,9 +1,13 @@
 import { Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
 import { studio } from "../../copy/studio";
-import { site } from "../../config/site";
+import { hasWhatsAppContact, site } from "../../config/site";
 
 export function InstagramBlock() {
+  const planCtaLabel = hasWhatsAppContact()
+    ? studio.finalCtaPrimaryWhatsApp
+    : studio.finalCtaPrimaryInstagram;
+
   return (
     <section
       id="contact"
@@ -16,9 +20,12 @@ export function InstagramBlock() {
           {studio.sections.finalCta}
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-cocoa">{studio.sections.finalCtaLead}</p>
-        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-cocoa">
+          Questions? We&apos;d love to hear what you&apos;re planning. Send {site.baker} a message.
+        </p>
+        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Link to="/plan" className="btn-primary">
-            {studio.primaryCta}
+            {planCtaLabel}
           </Link>
           <a
             href={site.instagramUrl}

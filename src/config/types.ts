@@ -31,6 +31,8 @@ export type ClientConfig = {
   };
   /** Dominant homepage hero image; falls back to heroImages.mobile */
   heroFeature?: HeroImage;
+  /** Optional portrait for the Story section */
+  bakerPortrait?: HeroImage;
   customizationLines: string[];
   signatureCakeIds?: string[];
   homeGalleryCakeIds?: string[];

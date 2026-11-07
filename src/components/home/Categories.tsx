@@ -25,7 +25,7 @@ export function Categories() {
                 to={`/plan?occasion=${encodeURIComponent(occasionLabels[occasion])}`}
                 className="mt-5 inline-block text-sm tracking-wide text-chocolate hover:underline"
               >
-                {studio.primaryCta}
+                {studio.occasionCta}
               </Link>
             </div>
           ))}

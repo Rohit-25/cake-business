@@ -14,7 +14,7 @@ export function NotFoundPage() {
       </p>
       <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
         <Link to="/plan" className="btn-primary">
-          {studio.primaryCta}
+          {studio.sectionPlan}
         </Link>
         <Link to="/gallery" className="text-sm text-chocolate">
           {site.galleryLinkLabel}

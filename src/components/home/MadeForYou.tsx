@@ -24,7 +24,7 @@ export function MadeForYou() {
             </p>
             <p className="mt-4 text-sm text-cocoa">{site.advanceNote}</p>
             <Link to="/plan" className="btn-primary mt-8">
-              {studio.primaryCta}
+              {studio.sectionPlan}
             </Link>
           </div>
 

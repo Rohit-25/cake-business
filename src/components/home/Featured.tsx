@@ -15,6 +15,9 @@ export function Featured() {
     <section className="section-pad" aria-labelledby="signature-heading">
       <div className="mx-auto max-w-content">
         <SectionIntro id="signature-heading" title={studio.sections.signature} lead={studio.sections.signatureLead} />
+        <p className="mx-auto mt-2 max-w-2xl text-center text-sm leading-relaxed text-cocoa">
+          {studio.sections.signatureDetail}
+        </p>
 
         <div className="mt-14 grid gap-6 lg:grid-cols-12 lg:gap-8">
           <Link

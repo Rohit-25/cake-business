@@ -24,12 +24,13 @@ export function Hero() {
             <p className="mt-3 text-sm leading-relaxed text-cocoa">{site.advanceNote}</p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link to="/plan" className="btn-primary">
-                {studio.primaryCta}
+                {studio.heroPrimary}
               </Link>
               <Link to="/gallery" className="btn-secondary">
-                {studio.secondaryCta}
+                {studio.heroSecondary}
               </Link>
             </div>
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-cocoa">{studio.ctaReassurance}</p>
           </div>
 
           <div className="order-1 lg:order-2 lg:col-span-7">
