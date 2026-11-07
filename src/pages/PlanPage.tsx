@@ -10,6 +10,7 @@ import {
   readOccasion,
   type Occasion,
 } from "../data/cakes";
+import { getInstagramDmUrl } from "../lib/instagram";
 import { buildCakeMessage } from "../lib/message";
 import { usePageTitle } from "../lib/usePageTitle";
 import { getWhatsAppUrl } from "../lib/whatsapp";
@@ -46,6 +47,7 @@ export function PlanPage() {
   const ready = Boolean(occasion && date && place);
   const useWhatsApp = hasWhatsAppContact();
   const whatsappUrl = ready && useWhatsApp ? getWhatsAppUrl(message) : null;
+  const instagramDmUrl = getInstagramDmUrl();
 
   async function copyMessage() {
     if (!ready) {
@@ -56,21 +58,25 @@ export function PlanPage() {
     setCopied(true);
   }
 
-  function onSendClick(event: MouseEvent<HTMLAnchorElement>) {
+  function onOutboundClick(event: MouseEvent<HTMLAnchorElement>) {
     if (!ready) {
       event.preventDefault();
       setAttempted(true);
     }
   }
 
-  async function onInstagramClick() {
+  async function onInstagramOutboundClick(event: MouseEvent<HTMLAnchorElement>) {
     if (!ready) {
+      event.preventDefault();
       setAttempted(true);
       return;
     }
-    await navigator.clipboard.writeText(message);
-    setCopied(true);
-    window.open(site.instagramUrl, "_blank", "noopener,noreferrer");
+    try {
+      await navigator.clipboard.writeText(message);
+      setCopied(true);
+    } catch {
+      // Link still opens; user can type from the preview above.
+    }
   }
 
   return (
@@ -174,10 +180,10 @@ export function PlanPage() {
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={onSendClick}
+                  onClick={onOutboundClick}
                   className="btn-primary"
                 >
-                  Send my cake idea to {site.baker}
+                  Send my cake idea on WhatsApp
                 </a>
               ) : (
                 <button type="button" onClick={() => void copyMessage()} className="btn-primary">
@@ -186,16 +192,26 @@ export function PlanPage() {
               )
             ) : (
               <>
-                <button type="button" onClick={() => void onInstagramClick()} className="btn-primary">
-                  {copied ? "Copied — open Instagram" : `Send my cake idea to ${site.baker}`}
-                </button>
-                <p className="text-sm text-cocoa">Your message is copied. Paste it in an Instagram DM.</p>
+                <a
+                  href={instagramDmUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(event) => void onInstagramOutboundClick(event)}
+                  className="btn-primary"
+                >
+                  Send my cake idea on Instagram
+                </a>
+                <p className="text-sm leading-relaxed text-cocoa">
+                  {copied
+                    ? "Message copied. Paste it into the chat that opens in Instagram."
+                    : "We’ll copy your message, then open Instagram DMs. Paste the text into the chat (Instagram does not allow prefilled messages on the web)."}
+                </p>
                 <button
                   type="button"
                   onClick={() => void copyMessage()}
                   className="text-sm text-chocolate underline-offset-2 hover:underline"
                 >
-                  {copied ? "Message copied again" : "Copy message only"}
+                  {copied ? "Copied again" : "Copy message only"}
                 </button>
               </>
             )}
