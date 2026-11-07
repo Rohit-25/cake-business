@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { Footer } from "./components/layout/Footer";
 import { Header } from "./components/layout/Header";
+import { ShareMeta } from "./components/ShareMeta";
 import { GalleryPage } from "./pages/GalleryPage";
 import { HomePage } from "./pages/HomePage";
 import { NotFoundPage } from "./pages/NotFoundPage";
@@ -28,6 +29,7 @@ function ScrollManager() {
 export default function App() {
   return (
     <div className="min-h-screen bg-ivory font-sans text-chocolate antialiased">
+      <ShareMeta />
       <ScrollManager />
       <Header />
       <main>

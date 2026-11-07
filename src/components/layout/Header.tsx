@@ -33,8 +33,18 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-stone bg-ivory/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-content items-center justify-between gap-3 px-5 py-4 sm:px-8">
-        <Link to="/" className="font-display text-lg leading-none text-chocolate sm:text-[1.35rem]">
-          {site.name}
+        <Link to="/" className="flex min-w-0 items-center gap-3" aria-label={site.name}>
+          {site.logoUrl ? (
+            <img
+              src={site.logoUrl}
+              alt=""
+              width={48}
+              height={48}
+              className="h-11 w-11 shrink-0 rounded-full border border-stone/80 object-cover sm:h-12 sm:w-12"
+            />
+          ) : (
+            <span className="truncate font-display text-lg leading-none text-chocolate sm:text-[1.35rem]">{site.name}</span>
+          )}
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">

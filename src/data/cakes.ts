@@ -54,13 +54,34 @@ function cakesByIds(ids: string[]): Cake[] {
   return ids.map((id) => getCake(id)).filter((cake): cake is Cake => Boolean(cake));
 }
 
+export function getHeroImageSrc(): string {
+  return site.heroFeature?.src ?? site.heroImages.mobile.src;
+}
+
+/** Drop gallery items that reuse the same photo as the homepage hero. */
+function withoutHeroDuplicate(list: Cake[]): Cake[] {
+  const heroSrc = getHeroImageSrc();
+  return list.filter((cake) => cake.image !== heroSrc);
+}
+
 export function getSignatureCakes(): Cake[] {
-  if (site.signatureCakeIds?.length) return cakesByIds([...site.signatureCakeIds]);
-  return cakes.slice(0, 3);
+  const base = site.signatureCakeIds?.length ? cakesByIds([...site.signatureCakeIds]) : cakes.slice(0, 3);
+  return withoutHeroDuplicate(base);
 }
 
 export function getHomeGalleryCakes(): Cake[] {
-  if (site.homeGalleryCakeIds?.length) return cakesByIds([...site.homeGalleryCakeIds]);
-  const exclude = new Set(getSignatureCakes().map((cake) => cake.id));
-  return cakes.filter((cake) => !exclude.has(cake.id)).slice(0, 4);
+  const signatureSrc = new Set(getSignatureCakes().map((cake) => cake.image));
+  const heroSrc = getHeroImageSrc();
+
+  if (site.homeGalleryCakeIds?.length) {
+    return withoutHeroDuplicate(cakesByIds([...site.homeGalleryCakeIds])).filter(
+      (cake) => !signatureSrc.has(cake.image) && cake.image !== heroSrc,
+    );
+  }
+
+  const excludeIds = new Set(getSignatureCakes().map((cake) => cake.id));
+  return cakes
+    .filter((cake) => !excludeIds.has(cake.id))
+    .filter((cake) => cake.image !== heroSrc)
+    .slice(0, 4);
 }

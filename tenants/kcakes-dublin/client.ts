@@ -33,9 +33,9 @@ export const client: ClientConfig = {
     "For areas outside Dublin and the surrounding counties, tell me where the celebration is. I'll confirm delivery or collection when we chat.",
   footerTagline: "Custom cream cheese cakes from Dublin, made for your celebration.",
   heroFeature: {
-    src: `${base}/pistachio-drip.png`,
-    alt: "Pistachio drip cake with buttercream rosettes, by K.Cakes Dublin.",
-    fallbackLabel: "Pistachio cake",
+    src: `${base}/purple-hearts.png`,
+    alt: "Purple heart celebration cake, by K.Cakes Dublin.",
+    fallbackLabel: "Heart cake",
   },
   heroImages: {
     left: {
@@ -70,4 +70,9 @@ export const client: ClientConfig = {
   galleryLinkLabel: "See the cakes",
   planGalleryLink: "Look at the gallery again",
   galleryPageTitle: "The cakes",
+  shareDescription:
+    "Custom cakes by Karolina. Bespoke cream cheese cakes in Dublin—plan your celebration and message on Instagram.",
+  shareImage: `${base}/logo.png`,
+  favicon: `${base}/logo.png`,
+  logoUrl: `${base}/logo.png`,
 };

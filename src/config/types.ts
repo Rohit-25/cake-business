@@ -8,8 +8,10 @@ export type ClientConfig = {
   name: string;
   baker: string;
   instagramUrl: string;
-  /** Digits only, with country code. Empty → Plan uses Instagram. */
+  /** Digits only, with country code. Empty unless using whatsappWaMePath. */
   whatsappNumber: string;
+  /** e.g. message/U57YUTEENQU6B1 for wa.me click-to-chat links from Instagram */
+  whatsappWaMePath?: string;
   town: string;
   region: string;
   advanceNote: string;
@@ -31,9 +33,16 @@ export type ClientConfig = {
   heroFeature?: HeroImage;
   customizationLines: string[];
   signatureCakeIds?: string[];
-  /** Distinct set for homepage gallery strip; falls back to later cakes in catalogue */
   homeGalleryCakeIds?: string[];
   galleryLinkLabel: string;
   planGalleryLink: string;
   galleryPageTitle: string;
+  /** Link preview title (browser tab & social). Defaults to name in build if omitted. */
+  shareTitle?: string;
+  /** e.g. "Custom cakes by Bam. Plan your celebration cake." */
+  shareDescription: string;
+  /** Path under public/ for og:image and social preview */
+  shareImage: string;
+  favicon?: string;
+  logoUrl?: string;
 };

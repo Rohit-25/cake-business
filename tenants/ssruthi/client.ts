@@ -69,4 +69,8 @@ export const client: ClientConfig = {
   galleryLinkLabel: "See her cakes",
   planGalleryLink: "Look at her cakes again",
   galleryPageTitle: "Her cakes",
+  shareDescription:
+    "Custom cakes by Ssruthi. Homemade celebration cakes in Gobichettipalayam—plan your cake and confirm details by message.",
+  shareImage: `${base}/engagement-cake.png`,
+  favicon: "/favicon.svg",
 };
