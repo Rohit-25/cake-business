@@ -6,9 +6,17 @@ type CakeImageProps = {
   fallbackLabel: string;
   className?: string;
   eager?: boolean;
+  priority?: boolean;
 };
 
-export function CakeImage({ src, alt, fallbackLabel, className = "", eager = false }: CakeImageProps) {
+export function CakeImage({
+  src,
+  alt,
+  fallbackLabel,
+  className = "",
+  eager = false,
+  priority = false,
+}: CakeImageProps) {
   const [failed, setFailed] = useState(false);
 
   if (failed) {
@@ -32,6 +40,7 @@ export function CakeImage({ src, alt, fallbackLabel, className = "", eager = fal
       className={className}
       loading={eager ? "eager" : "lazy"}
       decoding="async"
+      fetchPriority={priority ? "high" : undefined}
       onError={() => setFailed(true)}
     />
   );

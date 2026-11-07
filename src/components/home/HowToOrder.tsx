@@ -1,3 +1,6 @@
+import { studio } from "../../copy/studio";
+import { SectionIntro } from "./SectionIntro";
+
 const steps = [
   {
     number: "01",
@@ -18,25 +21,24 @@ const steps = [
 
 export function HowToOrder() {
   return (
-    <section className="mx-auto max-w-6xl px-5 pb-16 sm:px-8 lg:pb-24" aria-labelledby="planning-heading">
-      <div className="mx-auto max-w-2xl text-center">
-        <div className="mx-auto h-px w-10 bg-blush" />
-        <h2 id="planning-heading" className="mt-5 font-display text-4xl text-chocolate sm:text-5xl">
-          How we plan your cake
-        </h2>
-        <p className="mt-4 text-base leading-relaxed text-cocoa">
-          You tell me about the celebration. I’ll get back to you to confirm the details.
-        </p>
+    <section id="order" className="scroll-mt-24 section-pad" aria-labelledby="planning-heading">
+      <div className="mx-auto max-w-content">
+        <SectionIntro
+          id="planning-heading"
+          title={studio.sections.howToOrder}
+          lead="You tell me about the celebration. I’ll get back to you to confirm the details."
+        />
+
+        <ol className="mt-14 grid gap-0 md:grid-cols-3">
+          {steps.map((step) => (
+            <li key={step.number} className="border-t border-stone px-0 py-8 md:border-l md:border-t-0 md:px-8 md:first:border-l-0">
+              <p className="font-display text-3xl text-blush">{step.number}</p>
+              <h3 className="mt-4 font-display text-xl text-chocolate sm:text-2xl">{step.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-cocoa">{step.body}</p>
+            </li>
+          ))}
+        </ol>
       </div>
-      <ol className="mt-12 grid gap-8 md:grid-cols-3">
-        {steps.map((step) => (
-          <li key={step.number} className="border-t border-stone pt-6">
-            <p className="font-display text-3xl text-blush">{step.number}</p>
-            <h3 className="mt-4 font-display text-2xl text-chocolate">{step.title}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-cocoa">{step.body}</p>
-          </li>
-        ))}
-      </ol>
     </section>
   );
 }

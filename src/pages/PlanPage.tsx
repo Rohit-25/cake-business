@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState, type MouseEvent } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { deliveryPlaces, site } from "../config/site";
+import { deliveryPlaces, hasWhatsAppContact, site } from "../config/site";
 import {
   getCake,
   inspirationLine,
@@ -15,7 +15,7 @@ import { usePageTitle } from "../lib/usePageTitle";
 import { getWhatsAppUrl } from "../lib/whatsapp";
 
 const fieldClass =
-  "mt-3 w-full rounded-2xl border border-stone bg-card px-4 py-3 text-base text-chocolate outline-none";
+  "mt-3 w-full rounded-sm border border-stone bg-card px-4 py-3 text-base text-chocolate outline-none";
 
 export function PlanPage() {
   usePageTitle("Plan your cake");
@@ -44,7 +44,8 @@ export function PlanPage() {
   );
 
   const ready = Boolean(occasion && date && place);
-  const whatsappUrl = ready ? getWhatsAppUrl(message) : null;
+  const useWhatsApp = hasWhatsAppContact();
+  const whatsappUrl = ready && useWhatsApp ? getWhatsAppUrl(message) : null;
 
   async function copyMessage() {
     if (!ready) {
@@ -60,6 +61,16 @@ export function PlanPage() {
       event.preventDefault();
       setAttempted(true);
     }
+  }
+
+  async function onInstagramClick() {
+    if (!ready) {
+      setAttempted(true);
+      return;
+    }
+    await navigator.clipboard.writeText(message);
+    setCopied(true);
+    window.open(site.instagramUrl, "_blank", "noopener,noreferrer");
   }
 
   return (
@@ -157,27 +168,39 @@ export function PlanPage() {
           )}
 
           <div className="mt-8 flex flex-col items-start gap-4">
-            {whatsappUrl ? (
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={onSendClick}
-                className="inline-flex items-center justify-center rounded-full bg-chocolate px-6 py-3 text-sm text-ivory hover:bg-[#3a2d22]"
-              >
-                Send my cake idea to Ssruthi
-              </a>
+            {useWhatsApp ? (
+              whatsappUrl ? (
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={onSendClick}
+                  className="btn-primary"
+                >
+                  Send my cake idea to {site.baker}
+                </a>
+              ) : (
+                <button type="button" onClick={() => void copyMessage()} className="btn-primary">
+                  {copied ? "Copied" : "Copy message"}
+                </button>
+              )
             ) : (
-              <button
-                type="button"
-                onClick={() => void copyMessage()}
-                className="inline-flex items-center justify-center rounded-full bg-chocolate px-6 py-3 text-sm text-ivory hover:bg-[#3a2d22]"
-              >
-                {copied ? "Copied" : "Copy message"}
-              </button>
+              <>
+                <button type="button" onClick={() => void onInstagramClick()} className="btn-primary">
+                  {copied ? "Copied — open Instagram" : `Send my cake idea to ${site.baker}`}
+                </button>
+                <p className="text-sm text-cocoa">Your message is copied. Paste it in an Instagram DM.</p>
+                <button
+                  type="button"
+                  onClick={() => void copyMessage()}
+                  className="text-sm text-chocolate underline-offset-2 hover:underline"
+                >
+                  {copied ? "Message copied again" : "Copy message only"}
+                </button>
+              </>
             )}
             <Link to="/gallery" className="text-sm text-chocolate">
-              Look at her cakes again
+              {site.planGalleryLink}
             </Link>
           </div>
         </div>

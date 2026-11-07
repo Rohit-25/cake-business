@@ -28,3 +28,29 @@ body {
     scroll-behavior: auto;
   }
 }
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex min-h-11 items-center justify-center rounded-sm bg-chocolate px-6 py-3 text-sm tracking-wide text-ivory transition-colors hover:bg-[#3a2d22];
+  }
+
+  .btn-secondary {
+    @apply inline-flex min-h-11 items-center justify-center rounded-sm border border-stone bg-card px-6 py-3 text-sm tracking-wide text-chocolate transition-colors hover:border-chocolate/50;
+  }
+
+  .section-rule {
+    @apply mx-auto h-px w-12 bg-stone;
+  }
+
+  .section-pad {
+    @apply px-5 py-20 sm:px-8 lg:py-28;
+  }
+
+  .section-title {
+    @apply font-display text-4xl leading-tight text-chocolate sm:text-5xl lg:text-[3.25rem];
+  }
+
+  .editorial-image {
+    @apply overflow-hidden border border-stone/80 bg-card;
+  }
+}

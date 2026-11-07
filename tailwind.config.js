@@ -15,8 +15,8 @@ export default {
         display: ["Fraunces", "Georgia", "serif"],
         sans: ["Outfit", "system-ui", "sans-serif"],
       },
-      boxShadow: {
-        soft: "0 16px 36px rgba(44, 33, 24, 0.1)",
+      maxWidth: {
+        content: "72rem",
       },
     },
   },

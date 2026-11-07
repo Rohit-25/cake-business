@@ -1,30 +1,30 @@
 import { Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
+import { studio } from "../../copy/studio";
 import { site } from "../../config/site";
 
 export function InstagramBlock() {
   return (
-    <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-5 pb-20 sm:px-8 lg:pb-28" aria-labelledby="contact-heading">
-      <div className="px-2 py-4 text-center sm:px-8">
-        <div className="mx-auto h-px w-10 bg-blush" />
-        <h2 id="contact-heading" className="mt-5 font-display text-4xl text-chocolate sm:text-5xl">
-          Tell me about your celebration
+    <section
+      id="contact"
+      className="scroll-mt-24 border-t border-stone bg-card/50 section-pad"
+      aria-labelledby="contact-heading"
+    >
+      <div className="mx-auto max-w-content px-2 text-center sm:px-8">
+        <div className="section-rule" aria-hidden="true" />
+        <h2 id="contact-heading" className="section-title mt-6">
+          {studio.sections.finalCta}
         </h2>
-        <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-cocoa">
-          A few details are enough to start. I’ll get back to you to confirm the design, the date, and the price.
-        </p>
-        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Link
-            to="/plan"
-            className="inline-flex items-center justify-center rounded-full bg-chocolate px-6 py-3 text-sm text-ivory hover:bg-[#3a2d22]"
-          >
-            Plan your cake
+        <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-cocoa">{studio.sections.finalCtaLead}</p>
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <Link to="/plan" className="btn-primary">
+            {studio.primaryCta}
           </Link>
           <a
             href={site.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-stone bg-card px-6 py-3 text-sm text-chocolate hover:border-chocolate/40"
+            className="btn-secondary gap-2"
           >
             <Instagram className="h-4 w-4" aria-hidden="true" />
             Instagram

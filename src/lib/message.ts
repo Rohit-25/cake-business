@@ -1,3 +1,4 @@
+import { site } from "../config/site";
 import type { Occasion } from "../data/cakes";
 
 type MessageInput = {
@@ -41,7 +42,7 @@ export function formatCakeDate(iso: string) {
 
 export function buildCakeMessage({ occasion, date, place, people, idea }: MessageInput) {
   const kind = occasion ? cakePhrase(occasion) : "a cake";
-  let message = `Hi Ssruthi! I'd love to plan ${kind}.`;
+  let message = `Hi ${site.baker}! I'd love to plan ${kind}.`;
   const when = date ? formatCakeDate(date) : "";
   const where = place.trim();
   const size = peoplePhrase(people);

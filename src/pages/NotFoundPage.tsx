@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { studio } from "../copy/studio";
+import { site } from "../config/site";
 import { usePageTitle } from "../lib/usePageTitle";
 
 export function NotFoundPage() {
@@ -11,14 +13,11 @@ export function NotFoundPage() {
         You can look through my cakes, or tell me about the celebration you have in mind.
       </p>
       <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-        <Link
-          to="/plan"
-          className="inline-flex items-center justify-center rounded-full bg-chocolate px-6 py-3 text-sm text-ivory"
-        >
-          Plan your cake
+        <Link to="/plan" className="btn-primary">
+          {studio.primaryCta}
         </Link>
         <Link to="/gallery" className="text-sm text-chocolate">
-          See her cakes
+          {site.galleryLinkLabel}
         </Link>
       </div>
     </section>

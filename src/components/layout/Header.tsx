@@ -1,19 +1,17 @@
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
+import { studio } from "../../copy/studio";
 import { site } from "../../config/site";
 
 const hashLinks = [
-  { label: "About", to: "/#about" },
-  { label: "Visit", to: "/#visit" },
+  { label: "Story", to: "/#story" },
+  { label: "Order", to: "/#order" },
 ];
 
 function navClass(active: boolean) {
-  return `text-sm ${active ? "text-chocolate" : "text-cocoa hover:text-chocolate"}`;
+  return `text-sm tracking-wide ${active ? "text-chocolate" : "text-cocoa hover:text-chocolate"}`;
 }
-
-const planLink =
-  "inline-flex items-center justify-center rounded-full bg-chocolate px-4 py-2 text-sm text-ivory hover:bg-[#3a2d22] sm:px-5";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -33,33 +31,36 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-stone bg-ivory">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-5 py-4 sm:px-8">
-        <Link to="/" className="font-display text-lg leading-none text-chocolate sm:text-[1.4rem]">
+    <header className="sticky top-0 z-40 border-b border-stone bg-ivory/95 backdrop-blur-sm">
+      <div className="mx-auto flex max-w-content items-center justify-between gap-3 px-5 py-4 sm:px-8">
+        <Link to="/" className="font-display text-lg leading-none text-chocolate sm:text-[1.35rem]">
           {site.name}
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
           <NavLink to="/" end className={({ isActive }) => navClass(isActive)}>
             Home
           </NavLink>
           <NavLink to="/gallery" className={({ isActive }) => navClass(isActive)}>
-            Cakes
+            Creations
           </NavLink>
           {hashLinks.map((link) => (
-            <Link key={link.to} to={link.to} className="text-sm text-cocoa hover:text-chocolate">
+            <Link key={link.to} to={link.to} className="text-sm tracking-wide text-cocoa hover:text-chocolate">
               {link.label}
             </Link>
           ))}
         </nav>
 
         <div className="flex items-center gap-2">
-          <Link to="/plan" className={planLink}>
-            Plan your cake
+          <Link to="/plan" className="btn-primary hidden px-5 py-2.5 text-sm sm:inline-flex">
+            {studio.primaryCta}
+          </Link>
+          <Link to="/plan" className="btn-primary px-4 py-2.5 text-sm sm:hidden">
+            Create
           </Link>
           <button
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-stone lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center border border-stone lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             onClick={() => setOpen((value) => !value)}
@@ -76,7 +77,7 @@ export function Header() {
             Home
           </NavLink>
           <NavLink to="/gallery" className="py-3 text-base">
-            Cakes
+            Creations
           </NavLink>
           {hashLinks.map((link) => (
             <Link key={link.to} to={link.to} className="py-3 text-base">

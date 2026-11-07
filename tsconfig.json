@@ -17,5 +17,5 @@
     "allowJs": false,
     "resolveJsonModule": true
   },
-  "include": ["src"]
+  "include": ["src", "tenants"]
 }
