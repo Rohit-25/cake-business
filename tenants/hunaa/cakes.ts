@@ -1,0 +1,86 @@
+import type { Cake } from "../../src/data/cakeTypes";
+
+const base = "/tenants/hunaa/images";
+
+export const cakes: Cake[] = [
+  {
+    id: "mandas-birthday",
+    title: "Vintage piped birthday cake",
+    description: "Lambeth-style piping with ribbon bows and personalised name.",
+    occasion: "birthday",
+    image: `${base}/mandas-birthday.png`,
+    imageAlt: "Vintage red and cream birthday cake by Hunaa.cake.",
+  },
+  {
+    id: "cupcake-bouquet",
+    title: "Cupcake flower bouquet",
+    description: "Buttercream roses and florals arranged like a bouquet with ribbon stems.",
+    occasion: "birthday",
+    image: `${base}/cupcake-bouquet.png`,
+    imageAlt: "Cupcake bouquet by Hunaa.cake.",
+  },
+  {
+    id: "strawberry-dilla",
+    title: "Strawberry birthday cake",
+    description: "Pink frosting, fresh strawberries, and piped name on top.",
+    occasion: "birthday",
+    image: `${base}/strawberry-dilla.png`,
+    imageAlt: "Strawberry birthday cake by Hunaa.cake.",
+  },
+  {
+    id: "jungle-azka",
+    title: "Jungle safari kids cake",
+    description: "Animal faces around the sides with a personalised turning-one message.",
+    occasion: "kids",
+    image: `${base}/jungle-azka.png`,
+    imageAlt: "Jungle safari kids cake by Hunaa.cake.",
+  },
+  {
+    id: "ommar-safari",
+    title: "Safari turning three",
+    description: "Farm animal toppers and balloons for a third birthday.",
+    occasion: "kids",
+    image: `${base}/ommar-safari.png`,
+    imageAlt: "Kids safari cake by Hunaa.cake.",
+  },
+  {
+    id: "hamster-birthday",
+    title: "Character birthday cake",
+    description: "Smooth pink buttercream with a custom character topper.",
+    occasion: "kids",
+    image: `${base}/hamster-birthday.png`,
+    imageAlt: "Character kids cake by Hunaa.cake.",
+  },
+  {
+    id: "anime-ara",
+    title: "Custom illustrated cake",
+    description: "Hand-piped anime-style portrait and birthday message.",
+    occasion: "birthday",
+    image: `${base}/anime-ara.png`,
+    imageAlt: "Custom illustrated birthday cake by Hunaa.cake.",
+  },
+  {
+    id: "blue-engagement",
+    title: "Pastel engagement cake",
+    description: "Soft blue tiers with ribbon bows and personalised lettering.",
+    occasion: "engagement",
+    image: `${base}/blue-engagement.png`,
+    imageAlt: "Pastel blue engagement cake by Hunaa.cake.",
+  },
+  {
+    id: "coquette-birthday",
+    title: "Coquette birthday cake",
+    description: "Red piping, hearts, and ribbon bows on white buttercream.",
+    occasion: "birthday",
+    image: `${base}/coquette-birthday.png`,
+    imageAlt: "Coquette style birthday cake by Hunaa.cake.",
+  },
+  {
+    id: "flower-bouquet-board",
+    title: "Buttercream flower board",
+    description: "Cupcake flowers on a board with piped birthday message.",
+    occasion: "birthday",
+    image: `${base}/flower-bouquet-board.png`,
+    imageAlt: "Buttercream flower board by Hunaa.cake.",
+  },
+];

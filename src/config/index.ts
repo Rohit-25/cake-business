@@ -2,6 +2,7 @@ import { resolveClient, resolveTenantId, type TenantId } from "../../tenants/res
 import { cakes as bamCakes } from "../../tenants/customcakesbybam/cakes";
 import { cakes as kcakesCakes } from "../../tenants/kcakes-dublin/cakes";
 import { cakes as sugarpopCakes } from "../../tenants/sugarpop-usa/cakes";
+import { cakes as hunaaCakes } from "../../tenants/hunaa/cakes";
 import { cakes as sonalikaCakes } from "../../tenants/sonalika/cakes";
 import { cakes as ssruthiCakes } from "../../tenants/ssruthi/cakes";
 
@@ -19,6 +20,7 @@ const cakesByTenant = {
   customcakesbybam: bamCakes,
   "sugarpop-usa": sugarpopCakes,
   sonalika: sonalikaCakes,
+  hunaa: hunaaCakes,
 } as const;
 
 export const cakes = cakesByTenant[tenant];
